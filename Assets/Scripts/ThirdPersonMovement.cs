@@ -50,7 +50,17 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             speed = 8;
         }
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Animator.SetTrigger("Hit");
+
+            var lookPos = cam.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(-lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 10f);
+
+
+        }
         if (!fpOpen && !catOpen)
         {
             
