@@ -4,12 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Viper
-  - Goose
-  - Seal
-  - Seagull
-  - Turtle
-  - Hare
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -22,6 +22,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool catOpen;
     public bool fpOpen;
     Animator Animator;
+    public GameObject axe;
 
     void Start()
     {
