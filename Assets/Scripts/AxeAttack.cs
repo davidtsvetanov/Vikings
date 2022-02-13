@@ -44,7 +44,7 @@ public class AxeAttack : MonoBehaviour
                     }
                     else
                     {
-
+                        
                         foreach(Rigidbody enemyRag in enemyHealth.bodies)
                         {
                             enemyRag.isKinematic = false;
@@ -54,7 +54,10 @@ public class AxeAttack : MonoBehaviour
                 }
                 else
                 {
-                    //Destroy(other.gameObject);
+                    if (other.tag != "Bones")
+                    {
+                        Destroy(other.gameObject);
+                    }
                 }
             }
 
