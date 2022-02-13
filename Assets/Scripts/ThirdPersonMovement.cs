@@ -22,19 +22,29 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool catOpen;
     public bool fpOpen;
     Animator Animator;
-    public GameObject axe;
+    public GameObject Weapon;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Animator = Body.GetComponent<Animator>();
+     
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (Animator.GetCurrentAnimatorStateInfo(1).IsName("AxeHit"))
+        if (Animator.GetCurrentAnimatorStateInfo(1).IsName("ReverseSwordHit"))
+        {
+        
+            Animator.SetBool("InverseHit", false);
+        }
+            if (Animator.GetCurrentAnimatorStateInfo(1).IsName("NormalSwordHit"))
+            {
+            Animator.SetBool("SwordHit", false);
+        }
+            if (!Animator.GetCurrentAnimatorStateInfo(1).IsName("Default"))
         {
             var lookPos = cam.position - transform.position;
             lookPos.y = 0;
@@ -59,7 +69,26 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            Animator.SetTrigger("Hit");
+            switch (Weapon.tag)
+            {
+                case "Axe":
+                    Animator.SetTrigger("Hit");
+                    break;
+                case "Sword":
+                    if (Animator.GetCurrentAnimatorStateInfo(1).IsName("Default") || Animator.GetCurrentAnimatorStateInfo(1).IsName("ReverseSwordHit"))
+                    {
+                        Animator.SetBool("SwordHit", true);
+                        Animator.SetBool("InverseHit", false);
+                    }
+                    else
+                    {
+                        Animator.SetBool("InverseHit", true);
+                        Animator.SetBool("SwordHit", false); ;
+                    }
+                    break;
+            }
+
+         
 
             
 

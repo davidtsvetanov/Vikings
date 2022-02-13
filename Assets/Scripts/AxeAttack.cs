@@ -26,7 +26,7 @@ public class AxeAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (animator.GetCurrentAnimatorStateInfo(1).IsName("AxeHit"))
+        if (!animator.GetCurrentAnimatorStateInfo(1).IsName("Default"))
         {
             if (other.tag != "Player")
             {
