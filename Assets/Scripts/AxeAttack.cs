@@ -45,13 +45,16 @@ public class AxeAttack : MonoBehaviour
                     else
                     {
 
-                        Destroy(other.gameObject);
+                        foreach(Rigidbody enemyRag in enemyHealth.bodies)
+                        {
+                            enemyRag.isKinematic = false;
+                        }
                     }
                     
                 }
                 else
                 {
-                    Destroy(other.gameObject);
+                    //Destroy(other.gameObject);
                 }
             }
 
