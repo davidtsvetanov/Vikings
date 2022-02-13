@@ -5,14 +5,15 @@ using UnityEngine;
 public class AxeAttack : MonoBehaviour
 {
     public GameObject player;
-    private Animator animator;
+    public Animator animator;
+    private Collider collider;
  
 
     // Start is called before the first frame update
     void Start()
     {
         animator = player.GetComponent<Animator>();
-      
+        collider = GetComponent<Collider>();
 
 
     }
@@ -35,7 +36,9 @@ public class AxeAttack : MonoBehaviour
                   EnemyHealth enemyHealth =  other.gameObject.GetComponent<EnemyHealth>();
                     if (enemyHealth.health > 1)
                     {
-                        enemyHealth.bloodEffect.Play();
+                        ParticleSystem healthParticle = Instantiate(enemyHealth.bloodEffect, collider.bounds.center, new Quaternion(-transform.rotation.x,0,transform.rotation.z,0));
+                        healthParticle.Play();
+                        Destroy(healthParticle.gameObject, healthParticle.main.duration);
                         enemyHealth.health--;
                         
                     }
