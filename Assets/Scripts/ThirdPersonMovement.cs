@@ -34,8 +34,14 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        velocity.y += gravity * Time.deltaTime;
+        if (Animator.GetCurrentAnimatorStateInfo(1).IsName("AxeHit"))
+        {
+            var lookPos = cam.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(-lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 100f);
+        }
+            velocity.y += gravity * Time.deltaTime;
         Controller.Move(velocity * Time.deltaTime); 
        
       //  fpOpen = Player.GetComponent<MouseLookController>().fpOpen;
@@ -55,10 +61,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             Animator.SetTrigger("Hit");
 
-            var lookPos = cam.position - transform.position;
-            lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(-lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 10f);
+            
 
 
         }
