@@ -23,11 +23,13 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool fpOpen;
     Animator Animator;
     public GameObject Weapon;
+    AxeAttack axeAttack;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Animator = Body.GetComponent<Animator>();
+        axeAttack = Weapon.GetComponent<AxeAttack>();
      
     }
 
@@ -77,6 +79,7 @@ public class ThirdPersonMovement : MonoBehaviour
                 case "Sword":
                     if (Animator.GetCurrentAnimatorStateInfo(1).IsName("Default") || Animator.GetCurrentAnimatorStateInfo(1).IsName("ReverseSwordHit"))
                     {
+                        axeAttack.hit = false;
                         Animator.SetBool("SwordHit", true);
                         Animator.SetBool("InverseHit", false);
                     }
@@ -87,12 +90,13 @@ public class ThirdPersonMovement : MonoBehaviour
                     }
                     break;
             }
-
-         
-
-            
-
-
+            if (Animator.GetCurrentAnimatorStateInfo(1).IsName("NormalSwordHit"))
+            {
+                axeAttack.hit = false;
+            }
+            if (Animator.GetCurrentAnimatorStateInfo(1).IsName("Default")){
+                axeAttack.hit = false;
+            }
         }
         if (!fpOpen && !catOpen)
         {

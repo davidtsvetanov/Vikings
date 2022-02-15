@@ -5,8 +5,10 @@ using UnityEngine;
 public class AxeAttack : MonoBehaviour
 {
     public GameObject player;
-    public Animator animator;
+    Animator animator;
     private Collider collider;
+    public bool hit;
+    
  
 
     // Start is called before the first frame update
@@ -30,28 +32,38 @@ public class AxeAttack : MonoBehaviour
         {
             if (other.tag != "Player")
             {
-                
+
                 if (other.tag == "Enemy")
+
+
                 {
-                  EnemyHealth enemyHealth =  other.gameObject.GetComponent<EnemyHealth>();
-                    if (enemyHealth.health > 1)
+                    if (hit == false)
                     {
-                        ParticleSystem healthParticle = Instantiate(enemyHealth.bloodEffect, collider.bounds.center, new Quaternion(-transform.rotation.x,0,transform.rotation.z,0));
-                        healthParticle.Play();
-                        Destroy(healthParticle.gameObject, healthParticle.main.duration);
-                        enemyHealth.health--;
-                        
-                    }
-                    else
-                    {
-                        
-                        foreach(Rigidbody enemyRag in enemyHealth.bodies)
+                        EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+                        EnemyAI enemyAI = other.gameObject.GetComponent<EnemyAI>();
+                        if (enemyHealth.health > 1)
                         {
-                            enemyRag.isKinematic = false;
+                            ParticleSystem healthParticle = Instantiate(enemyHealth.bloodEffect, collider.bounds.center, new Quaternion(-transform.rotation.x, 0, transform.rotation.z, 0));
+                            healthParticle.Play();
+                            Destroy(healthParticle.gameObject, healthParticle.main.duration);
+                            enemyHealth.health--;
+                            
+                        }
+
+
+                        else
+                        {
+
+                            foreach (Rigidbody enemyRag in enemyHealth.bodies)
+                            {
+                                Destroy(enemyAI.anim);
+                                enemyRag.isKinematic = false;
+                            }
                         }
                     }
-                    
                 }
+                    
+                
                 else
                 {
                     if (other.tag != "Bones")
@@ -59,8 +71,8 @@ public class AxeAttack : MonoBehaviour
                         Destroy(other.gameObject);
                     }
                 }
-            }
-
+                hit = true;
+            } 
         }
 
     }

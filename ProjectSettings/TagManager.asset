@@ -8,6 +8,7 @@ TagManager:
   - Seagull
   - Axe
   - Sword
+  - Bones
   layers:
   - Default
   - TransparentFX
