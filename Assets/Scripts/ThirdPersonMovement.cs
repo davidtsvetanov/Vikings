@@ -88,7 +88,12 @@ public class ThirdPersonMovement : MonoBehaviour
                         Animator.SetBool("InverseHit", true);
                         Animator.SetBool("SwordHit", false); ;
                     }
+                    
                     break;
+                    case "Spear":
+                    Animator.SetTrigger("SpearHit");
+                    break;
+                    
             }
             if (Animator.GetCurrentAnimatorStateInfo(1).IsName("NormalSwordHit"))
             {
