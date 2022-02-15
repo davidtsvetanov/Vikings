@@ -95,6 +95,7 @@ public class ThirdPersonMovement : MonoBehaviour
                     break;
                     
             }
+            
             if (Animator.GetCurrentAnimatorStateInfo(1).IsName("NormalSwordHit"))
             {
                 axeAttack.hit = false;
@@ -103,7 +104,11 @@ public class ThirdPersonMovement : MonoBehaviour
                 axeAttack.hit = false;
             }
         }
-        if (!fpOpen && !catOpen)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Animator.SetTrigger("PickUp");
+        }
+        if (!Animator.GetCurrentAnimatorStateInfo(2).IsName("PickUp"))
         {
             
             isGrounded = Physics.CheckSphere(GroundCheck.position, groundDistance, groundMask);
@@ -143,6 +148,10 @@ public class ThirdPersonMovement : MonoBehaviour
                 
             }
            
+        }
+        else
+        {
+            Animator.SetFloat("MovementSpeed", 0f);
         }
     }
 }
