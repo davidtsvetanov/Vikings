@@ -686,7 +686,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 438630}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -158.978, y: -35.889008, z: 63.628998}
 --- !u!33 &3387854
 MeshFilter:
@@ -856,9 +856,9 @@ Transform:
   m_LocalPosition: {x: 0.2711449, y: -2.842171e-16, z: 0.00038136088}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1441721581675265568}
   - {fileID: 3387431682365337120}
   - {fileID: 499160}
+  - {fileID: 1441721581675265568}
   - {fileID: 472476}
   - {fileID: 475832}
   - {fileID: 476240}
@@ -2781,9 +2781,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Spear_03
       objectReference: {fileID: 0}
+    - target: {fileID: 124464, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 487028, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 487028, guid: bc97a13f46e9e7b4d8d2bfa40fcdc1e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2846,7 +2850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 486244, guid: 694b0fc9d0f51d34fb49ea2b3bad4631, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 486244, guid: 694b0fc9d0f51d34fb49ea2b3bad4631, type: 3}
       propertyPath: m_LocalPosition.x

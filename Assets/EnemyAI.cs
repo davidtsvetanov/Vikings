@@ -28,7 +28,7 @@ public class EnemyAI : MonoBehaviour
         if (enemyHealth.health > 1)
         {
             float currentDistance = Vector3.Distance(player.transform.position, transform.position);
-            Debug.Log(currentDistance);
+            
             if (currentDistance < detectRange && currentDistance > hittingRange)
             {
                 anim.SetBool("Walking", true);
