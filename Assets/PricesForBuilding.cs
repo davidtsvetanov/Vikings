@@ -13,10 +13,12 @@ public class PricesForBuilding : MonoBehaviour
 
     private void Awake()
     {
-        isBuildingPlaced =  PlayerPrefs.GetInt("BuildingPlaced" + id,0);
+       
+        Debug.Log(id);
     }
     private void Start()
     {
+        isBuildingPlaced = PlayerPrefs.GetInt("BuildingPlaced" + id, 0);
         if (isBuildingPlaced==1)
         {
             Instantiate(futureBuildingPrefab, transform.position + new Vector3(0, 2, 0), Quaternion.identity);

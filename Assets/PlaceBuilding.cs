@@ -40,6 +40,7 @@ public class PlaceBuilding : MonoBehaviour
         if (other.tag == "Building1")
         {
             spawnPlatform = other.gameObject;
+            spawnPlatform.GetComponent<Outline>().enabled = true;
             onTarget = true;
 
         }
@@ -48,6 +49,7 @@ public class PlaceBuilding : MonoBehaviour
     {
         if (other.tag == "Building1")
         {
+            spawnPlatform.GetComponent<Outline>().enabled = false;
             spawnPlatform = null;
             onTarget = false;
 
