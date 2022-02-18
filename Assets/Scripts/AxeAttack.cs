@@ -8,7 +8,8 @@ public class AxeAttack : MonoBehaviour
     Animator animator;
     private Collider collider;
     public bool hit;
-    
+    [SerializeField]
+    private ResourceManager resources;
  
 
     // Start is called before the first frame update
@@ -68,6 +69,10 @@ public class AxeAttack : MonoBehaviour
                 {
                     if (other.tag != "Bones")
                     {
+                        if (other.tag == "Wood")
+                        {
+                            resources.wood++;
+                        }
                         Destroy(other.gameObject);
                     }
                 }
