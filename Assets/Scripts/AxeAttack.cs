@@ -71,9 +71,25 @@ public class AxeAttack : MonoBehaviour
                     {
                         if (other.tag == "Wood")
                         {
-                            resources.wood++;
+                            TreeHealth treeHealth = other.GetComponent<TreeHealth>();
+                            if (treeHealth.isTreeDead == false)
+                            {
+                                treeHealth.health--;
+
+                                other.transform.eulerAngles += new Vector3(1, 0, 0);
+                                resources.wood++;
+                                if (treeHealth.health < 1)
+                                {
+                                    treeHealth.isTreeDead = true;
+                                    other.GetComponent<Rigidbody>().isKinematic = false;
+                                }
+                            }
                         }
-                        Destroy(other.gameObject);
+                        else
+                        {
+
+                            Destroy(other.gameObject);
+                        }
                     }
                 }
                 hit = true;
